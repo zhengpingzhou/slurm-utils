@@ -1,11 +1,3 @@
-"""
-Workflow:
-sb "python train.py -id ..."
--> generate slurm/slurm/slurm-$RUNID.sh
-			slurm/wrapper/wrapper-$RUNID.sh
-			slurm/stdout/stdout-$RUNID.out
--> sbatch slurm/slurm/slurm-$RUNID.sh
-"""
 import argparse
 import sys, os
 import shlex
