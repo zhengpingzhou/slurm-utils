@@ -6,9 +6,13 @@ import datetime
 parser = argparse.ArgumentParser()
 parser.add_argument('cmd', type=str)
 parser.add_argument('--node', type=str)
+parser.add_argument('--no_tqdm', action='store_true')
 args = parser.parse_args()
 
 CMD = args.cmd
+if args.no_tqdm:
+    CMD += " --no_tqdm"
+
 PWD = os.getcwd()
 print(CMD)
 print(PWD)
@@ -73,3 +77,7 @@ with open(slurm_script, 'w') as fout:
 print('slurm script:', slurm_script)
 print('wrapper script:', wrapper_script)
 print('writing output to:', stdout_dir)
+
+launch = f'sbatch {slurm_script}'
+print(launch)
+os.system(launch)
